@@ -8,14 +8,14 @@ class Counter extends Component {
         tags : ["tag 1", "tag 2", "tag 3"]
     };
 
-    constructor(){
+    /* constructor(){
         super();
-        console.log("Constructor", this);
-    }
+        this.handleIncrement = this.handleIncrement.bind(this);
+    } */
 
-    handleIncrement(){
-        console.log('Increment Clicked', this);
-    }
+    handleIncrement = () => {
+        this.setState({ count: this.state.count + 1})
+    };
 // use js inside span, in this case {function()} 
 //because jsx babel compile, span uses className instead of class (html). Also using Bootstrap!
     render() { 
