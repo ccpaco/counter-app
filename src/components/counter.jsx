@@ -14,21 +14,25 @@ class Counter extends Component {
     } */
 
     handleIncrement = () => {
-        this.setState({ count: this.state.count + 1})
+        
+        this.setState({ count: this.state.count + 1});
     };
 // use js inside span, in this case {function()} 
 //because jsx babel compile, span uses className instead of class (html). Also using Bootstrap!
     render() { 
         return (
-          <div>
-            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+          <div className = "m-4">
+            <h1>Counter-App!</h1>
+            <p> A simple react app with some functionality!</p>
             <button
-              onClick={this.handleIncrement}
+              onClick={ () => this.handleIncrement() }
               className="btn btn-secondary btn-sm"
             >
               Increment
             </button>
+            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             {this.renderTags()}
+            <p> Counter App (Lesson 1-14) complete 10-16-20 </p>
           </div>
         );
     }
