@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = { 
-        count : 0,
-        tags : ["tag 1", "tag 2", "tag 3"]
+        value : this.props.value
     };
 
     /* constructor(){
@@ -14,16 +13,14 @@ class Counter extends Component {
     } */
 
     handleIncrement = () => {
-        
-        this.setState({ count: this.state.count + 1});
+        this.setState({ value: this.state.value + 1});
     };
 // use js inside span, in this case {function()} 
 //because jsx babel compile, span uses className instead of class (html). Also using Bootstrap!
     render() { 
         return (
           <div className = "m-4">
-            <h1>Counter-App!</h1>
-            <p> A simple react app with some functionality!</p>
+            <h1>Dynamic Render! <mark>{this.props.title}</mark></h1>
             <button
               onClick={ () => this.handleIncrement() }
               className="btn btn-secondary btn-sm"
@@ -31,8 +28,8 @@ class Counter extends Component {
               Increment
             </button>
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            {this.renderTags()}
-            <p> Counter App (Lesson 1-14) complete 10-16-20 </p>
+            
+            
           </div>
         );
     }
@@ -47,12 +44,12 @@ class Counter extends Component {
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += (this.state.count === 0) ? "warning" : "primary";
+        classes += (this.state.value === 0) ? "warning" : "primary";
         return classes;
     }
 
     formatCount(){
-        const { count } = this.state;
+        const { value: count } = this.state;
         return count === 0 ? 'Zero' : count;
     }
     
