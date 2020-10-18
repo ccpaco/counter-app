@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = { 
-        value : this.props.value
+        value : this.props.counter.value
     };
 
     /* constructor(){
@@ -20,16 +20,14 @@ class Counter extends Component {
     render() { 
         return (
           <div className = "m-4">
-            <h1>Dynamic Render! <mark>{this.props.title}</mark></h1>
+            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button
               onClick={ () => this.handleIncrement() }
               className="btn btn-secondary btn-sm"
             >
               Increment
             </button>
-            <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-            
-            
+            <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-4"> Delete </button> 
           </div>
         );
     }
