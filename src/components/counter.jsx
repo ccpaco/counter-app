@@ -20,6 +20,8 @@ class Counter extends Component {
 // use js inside span, in this case {function()} 
 //because jsx babel compile, span uses className instead of class (html). Also using Bootstrap!
     render() { 
+        console.log('Counter - Rendered');
+
         return (
           <div className = "m-4">
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
