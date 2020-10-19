@@ -3,18 +3,20 @@ import React, { Component } from 'react';
 
 
 class Counter extends Component {
-    state = { 
-        value : this.props.counter.value
-    };
+    // REMOVE state and handleIncrement in order to reset counters.value
+
+    // state = { 
+    //     value : this.props.counter.value
+    // };
 
     /* constructor(){
         super();
         this.handleIncrement = this.handleIncrement.bind(this);
     } */
 
-    handleIncrement = () => {
-        this.setState({ value: this.state.value + 1});
-    };
+    // handleIncrement = () => {
+    //     this.setState({ value: this.state.value + 1});
+    // };
 // use js inside span, in this case {function()} 
 //because jsx babel compile, span uses className instead of class (html). Also using Bootstrap!
     render() { 
@@ -22,12 +24,16 @@ class Counter extends Component {
           <div className = "m-4">
             <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
             <button
-              onClick={ () => this.handleIncrement() }
+              onClick={ () => this.props.onIncrement(this.props.counter)}
               className="btn btn-secondary btn-sm"
             >
-              Increment
+            Increment
             </button>
-            <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-4"> Delete </button> 
+            <button 
+            onClick={() => this.props.onDelete(this.props.counter.id)} 
+            className="btn btn-danger btn-sm m-4"> 
+            Delete
+            </button> 
           </div>
         );
     }
@@ -42,12 +48,12 @@ class Counter extends Component {
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += (this.state.value === 0) ? "warning" : "primary";
+        classes += (this.props.counter === 0) ? "warning" : "primary";
         return classes;
     }
 
     formatCount(){
-        const { value: count } = this.state;
+        const { value: count } = this.props.counter;
         return count === 0 ? 'Zero' : count;
     }
     
